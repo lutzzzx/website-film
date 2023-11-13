@@ -8,7 +8,7 @@ if (isset($_POST['register'])){
     $hash     = md5($password);
     
     $sql    = "SELECT * FROM user WHERE email = '$email'";
-    $query  = mysqli_query($connect, $sql1);
+    $query  = mysqli_query($connect, $sql);
     $check  = mysqli_fetch_assoc($query1);    
 
     if ($check > 0){
