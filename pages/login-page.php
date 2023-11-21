@@ -15,9 +15,9 @@
       <div class="card bg-dark d-flex flex-column justify-content-between" style="width: 400px; height: 530px">
         <div class="card-body">
           <label for="email">E-mail</label>
-          <input type="email" name="" id="email" class="input-form bg-dark mb-2">
+          <input type="email" name="" id="email" class="input-form bg-dark mb-2" required>
           <label for="password">Password</label>
-          <input type="password" name="" id="password" class="input-form bg-dark mb-2">
+          <input type="password" name="" id="password" class="input-form bg-dark mb-2" required>
         </div>
         <div class="card-footer mt-auto text-center">
           <input type="submit" value="Sign Up" class="btn btn-primary px-5 mb-3">
