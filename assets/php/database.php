@@ -1,3 +1,7 @@
 <?php 
-    $connect = mysql_connect('localhost', 'root', '', 'db_film') or die ("Gagal terhubung dengan database"); 
+  $server   = 'localhost';
+  $user     = 'root';
+  $password = '';
+  $db       = 'db_film';
+  $connect = mysqli_connect($server, $user, $password, $db) or die ("gagal koneksi");
 ?>

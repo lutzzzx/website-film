@@ -2,7 +2,7 @@
 include('database.php');
 session_start();
 
-if (isset($_POST['login'])){
+if (isset($_POST['Sign-In'])){
 
     $email    = $_POST['inpEmail'];
     $password = $_POST['inpPassword'];
@@ -13,13 +13,29 @@ if (isset($_POST['login'])){
     $check = mysqli_fetch_assoc($query);
 
     if ($check < 1){
-        ?> <script>alert('Email tidak terdaftar!');</script> <?php
+        ?>
+        <script>
+            alert('Email tidak terdaftar!');
+            window.location.href='../../pages/register-page.php';
+        </script> 
+        <?php
+        
     } else {
         if ($check['email'] === $email && $check['password'] === $hash){
             $_SESSION['id_user'] = $check['id'];
-            header('location: dashboard.html');
+            ?>
+            <script>
+                alert('Login berhasil!');
+                window.location.href='../../index.php';
+            </script>
+            <?php
         } else { 
-            ?> <script>alert('Email atau Password salah!');</script> <?php
+            ?>
+            <script>
+                alert('Email atau Password salah!');
+                window.location.href='../../pages/login-page.php';
+            </script>
+            <?php
         }
     }
 }
