@@ -25,6 +25,30 @@ a {
 .vh-50 {
   height: 50vh !important;
 }
+.h-100 {
+  height: 100%;
+}
+.w-100 {
+  width: 100%;
+}
+.mt-0 {
+  margin-top: 0 !important;
+}
+.mt-1 {
+  margin-top: 0.25rem !important;
+}
+.mt-2 {
+  margin-top: 0.5rem !important;
+}
+.mt-3 {
+  margin-top: 1rem !important;
+}
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+.mt-5 {
+  margin-top: 3rem !important;
+}
 .mb-0 {
   margin-bottom: 0 !important;
 }
@@ -67,6 +91,23 @@ a {
   padding-right: 2.5rem !important;
   padding-left: 2.5rem !important;
 }
+.px-6 {
+  padding-right: 5rem !important;
+  padding-left: 5rem !important;
+}
+.py-1 {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+.py-2 {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+.py-3 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
 .mt-auto {
   margin-top: auto !important;
 }
@@ -81,6 +122,12 @@ a {
 }
 .justify-content-between {
   justify-content: space-between;
+}
+.position-relative {
+  position: relative;
+}
+.position-absolute {
+  position: absolute;
 }
 .container {
   max-width: 1320px;
@@ -111,14 +158,23 @@ a {
   border-radius: 14px;
   border: 1px solid #dedede;
 }
+.validasi {
+  color: var(--color-primary);
+  font-size: 12px;
+}
 .btn {
   cursor: pointer;
   text-decoration: none;
   border-radius: 13px;
   text-align: center;
   border: none;
-  padding: 12px 24px;
+  padding: 12px 16px;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+.btn:disabled,
+.btn:hover:disabled {
+  background-color: #808080;
+  cursor: not-allowed;
 }
 .btn-primary {
   background-color: var(--color-primary);
@@ -127,4 +183,55 @@ a {
 .btn-primary:hover {
   background-color: var(--color-primary-2);
   color: var(--color-light);
+}
+.show {
+  display: block !important;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-content {
+  background-color: black;
+  color: var(--color-light);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 60px 140px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.login-bg {
+  background: url("../images/background.jpg") center center fixed;
+  background-size: cover;
+  z-index: 0;
+}
+.overlay {
+  background-color: rgba(30, 30, 30, 0.75);
+  z-index: -1;
+}
+form {
+  z-index: 1;
 }
