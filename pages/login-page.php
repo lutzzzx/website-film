@@ -49,7 +49,7 @@
   </div>
   
   <!-- SignIn Gagal -->
-  <div class="modal show"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+  <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <img src="../assets/images/warning.png" alt="" width="70px">
       <h2 class="color-primary mb-2">Sign In Gagal</h2>
