@@ -1,3 +1,28 @@
+<?php
+include('../assets/php/database.php');
+$modalRegistered = "";
+$modalSuccess = "";
+
+if (isset($_POST['Sign-Up'])){
+    $nama     = $_POST["inpNama"];
+    $email    = $_POST["inpEmail"];
+    $password = $_POST["inpPassword"];
+    $hash     = md5($password);
+    
+    $sql    = "SELECT * FROM user WHERE email = '$email'";
+    $query  = mysqli_query($connect, $sql);
+    $check  = mysqli_fetch_assoc($query);    
+
+    if ($check > 0){
+        $modalRegistered = "show";
+    } else {
+        $sql1   = "INSERT INTO user (nama, email, password) VALUES ('$nama', '$email','$hash')";
+        $query1 = mysqli_query($connect, $sql1);
+        $modalSuccess = "show"; 
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +37,7 @@
 <body>
   <div class="login-bg vh-100 position-relative">
     <div class="overlay position-absolute h-100 w-100">
-     <form action="../assets/php/register.php" method="POST" class="position-relative">
+     <form action="register-page.php" method="POST" class="position-relative">
         <div class="container vh-100 d-flex align-items-center">
           <div class="card bg-dark d-flex flex-column justify-content-between" style="width: 400px; height: 530px">
             <div class="card-body">
@@ -46,7 +71,7 @@
   </div>
 
   <!-- SignUp Sukses -->
-  <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+  <div class="modal <?php echo $modalSuccess ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Berhasil membuat akun!</p>
       <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
@@ -54,17 +79,15 @@
   </div>
   
   <!-- SignUp Gagal -->
-  <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+  <div class="modal <?php echo $modalRegistered ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <img src="../assets/images/warning.png" alt="" width="70px">
       <h2 class="color-primary mb-2">Sign Up Gagal</h2>
-      <p class="mb-3">Mohon hubungi administrator!</p>
+      <p class="mb-3">Email telah terdaftar!</p>
       <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
     </div>
   </div>
 
   <script type="module" src="../assets/js/validation-auth.js"></script>
-
-  </script>
 </body>
 </html>

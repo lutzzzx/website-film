@@ -1,9 +1,39 @@
+<?php
+include('../assets/php/database.php');
+session_start();
+$modalSuccess = "";
+$modalInvalid = "";
+$modalUnregistered = "";
+
+if (isset($_POST['Sign-In'])){
+
+    $email    = $_POST['inpEmail'];
+    $password = $_POST['inpPassword'];
+    $hash     = md5($password);
+    
+    $sql   = "SELECT * FROM user WHERE email = '$email'";
+    $query = mysqli_query($connect, $sql);
+    $check = mysqli_fetch_assoc($query);
+
+    if ($check < 1){
+        $modalUnregistered = "show";
+    } else {
+        if ($check['email'] === $email && $check['password'] === $hash){
+            $_SESSION['id_user'] = $check['id'];
+            $modalSuccess = "show";
+        } else { 
+          $modalInvalid = "show";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register</title>
+  <title>Login</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +42,7 @@
 <body>
 <div class="login-bg vh-100 position-relative">
     <div class="overlay position-absolute h-100 w-100">
-     <form action="../assets/php/login.php" method="POST" class="position-relative">
+     <form action="login-page.php" method="POST" class="position-relative">
         <div class="container vh-100 d-flex align-items-center">
           <div class="card bg-dark d-flex flex-column justify-content-between" style="width: 400px; height: 530px">
             <div class="card-body">
@@ -41,7 +71,7 @@
   </div>
 
   <!-- SignIn Sukses -->
-  <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+  <div class="modal <?php echo $modalSuccess ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Berhasil masuk ke akun!</p>
       <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
@@ -49,14 +79,24 @@
   </div>
   
   <!-- SignIn Gagal -->
-  <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+  <div class="modal <?php echo $modalInvalid ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <img src="../assets/images/warning.png" alt="" width="70px">
       <h2 class="color-primary mb-2">Sign In Gagal</h2>
-      <p class="mb-3">Periksa Kembali email/password anda!</p>
+      <p class="mb-3">Periksa Kembali Password anda!</p>
       <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
     </div>
   </div>
+
+  <!-- SignIn Gagal (email belum terdaftar) -->
+  <div class="modal <?php echo $modalUnregistered ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+    <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
+      <img src="../assets/images/warning.png" alt="" width="70px">
+      <h2 class="color-primary mb-2">Sign In Gagal</h2>
+      <p class="mb-3">Email belum terdaftar!</p>
+      <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
+    </div>
+  </div>
 
   <script src="../assets/js/validation-auth.js"></script>
 </body>
