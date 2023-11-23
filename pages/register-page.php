@@ -21,6 +21,11 @@ if (isset($_POST['Sign-Up'])){
         $modalSuccess = "show"; 
     }
 }
+
+if (isset($_POST['close'])) {
+    $modalRegistered = "";
+    $modalSuccess = "";
+}
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +79,9 @@ if (isset($_POST['Sign-Up'])){
   <div class="modal <?php echo $modalSuccess ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Berhasil membuat akun!</p>
-      <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
+      <form action="register-page.php" method="POST">
+       <input type="submit" name="close" value="OK" class="btn btn-primary px-6 py-2">
+      </form>
     </div>
   </div>
   
@@ -84,7 +91,9 @@ if (isset($_POST['Sign-Up'])){
       <img src="../assets/images/warning.png" alt="" width="70px">
       <h2 class="color-primary mb-2">Sign Up Gagal</h2>
       <p class="mb-3">Email telah terdaftar!</p>
-      <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
+      <form action="register-page.php" method="POST">
+       <input type="submit" name="close" value="OK" class="btn btn-primary px-6 py-2">
+      </form>
     </div>
   </div>
 

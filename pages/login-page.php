@@ -26,6 +26,12 @@ if (isset($_POST['Sign-In'])){
         }
     }
 }
+
+if (isset($_POST['close'])) {
+  $modalSuccess = "";
+  $modalInvalid = "";
+  $modalUnregistered = "";
+}
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +80,9 @@ if (isset($_POST['Sign-In'])){
   <div class="modal <?php echo $modalSuccess ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Berhasil masuk ke akun!</p>
-      <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
+      <form action="login-page.php" method="POST">
+       <input type="submit" name="close" value="OK" class="btn btn-primary px-6 py-2">
+      </form>
     </div>
   </div>
   
@@ -84,7 +92,9 @@ if (isset($_POST['Sign-In'])){
       <img src="../assets/images/warning.png" alt="" width="70px">
       <h2 class="color-primary mb-2">Sign In Gagal</h2>
       <p class="mb-3">Periksa Kembali Password anda!</p>
-      <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
+      <form action="login-page.php" method="POST">
+       <input type="submit" name="close" value="OK" class="btn btn-primary px-6 py-2">
+      </form>
     </div>
   </div>
 
@@ -94,7 +104,9 @@ if (isset($_POST['Sign-In'])){
       <img src="../assets/images/warning.png" alt="" width="70px">
       <h2 class="color-primary mb-2">Sign In Gagal</h2>
       <p class="mb-3">Email belum terdaftar!</p>
-      <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
+      <form action="login-page.php" method="POST">
+       <input type="submit" name="close" value="OK" class="btn btn-primary px-6 py-2">
+      </form>
     </div>
   </div>
 
