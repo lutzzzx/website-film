@@ -45,10 +45,21 @@
     </div>
   </div>
 
+  <!-- SignUp Sukses -->
   <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
-    <div class="modal-content card bg-dark text-center">
+    <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Berhasil membuat akun!</p>
-      <input type="submit" value="OK" class="btn btn-primary px-6">
+      <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
+    </div>
+  </div>
+  
+  <!-- SignUp Gagal -->
+  <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+    <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
+      <img src="../assets/images/warning.png" alt="" width="70px">
+      <h1 class="color-primary mb-2">Sign Up Gagal</h1>
+      <p class="mb-3">Mohon hubungi administrator!</p>
+      <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
     </div>
   </div>
 

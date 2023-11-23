@@ -40,13 +40,24 @@
     </div>
   </div>
 
+  <!-- SignIn Sukses -->
   <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
-    <div class="modal-content card bg-dark text-center">
+    <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Berhasil masuk ke akun!</p>
-      <input type="submit" value="OK" class="btn btn-primary px-6">
+      <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
+    </div>
+  </div>
+  
+  <!-- SignIn Gagal -->
+  <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+    <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
+      <img src="../assets/images/warning.png" alt="" width="70px">
+      <h1 class="color-primary mb-2">Sign In Gagal</h1>
+      <p class="mb-3">Periksa Kembali email/password anda!</p>
+      <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
     </div>
   </div>
 
-  <script type="module" src="../assets/js/validation-auth.js"></script>
+  <script src="../assets/js/validation-auth.js"></script>
 </body>
 </html>
