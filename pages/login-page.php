@@ -49,10 +49,10 @@
   </div>
   
   <!-- SignIn Gagal -->
-  <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+  <div class="modal show"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <img src="../assets/images/warning.png" alt="" width="70px">
-      <h1 class="color-primary mb-2">Sign In Gagal</h1>
+      <h2 class="color-primary mb-2">Sign In Gagal</h2>
       <p class="mb-3">Periksa Kembali email/password anda!</p>
       <input type="submit" value="OK" class="btn btn-primary px-6 py-2">
     </div>
