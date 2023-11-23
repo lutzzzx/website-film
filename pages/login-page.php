@@ -31,7 +31,7 @@
               </div>
             </div>
             <div class="card-footer mt-auto text-center">
-              <input id="submit" type="submit" value="Sign Up" name="Sign-Up" class="btn btn-primary px-5 mb-3" disabled>
+              <input id="submit" type="submit" value="Sign In" name="Sign-In" class="btn btn-primary px-5 mb-3" disabled>
               <p>Belum memiliki akun? <span><a href="register-page.php">Buat Akun.</a></span> </p>
             </div>
           </div>
