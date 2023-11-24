@@ -60,8 +60,14 @@ a {
 .w-75 {
   width: 75%;
 }
+.w-70 {
+  width: 70%;
+}
 .w-50 {
   width: 50%;
+}
+.w-30 {
+  width: 30%;
 }
 .w-25 {
   width: 25%;
@@ -208,6 +214,9 @@ a {
 .position-absolute {
   position: absolute;
 }
+.position-fixed {
+  position: fixed;
+}
 .container {
   max-width: 1320px;
   width: 100%;
@@ -260,8 +269,9 @@ a {
   font-size: 16px;
 }
 .btn:disabled,
-.btn:hover:disabled {
-  background-color: #808080;
+.btn:hover:disabled,
+.btn-disabled {
+  background-color: #808080 !important;
   cursor: not-allowed;
 }
 .btn-primary {
@@ -402,4 +412,12 @@ a {
 }
 .link-movie:hover p {
   color: var(--color-primary);
+}
+.overflow-auto {
+  overflow: auto;
+}
+.comment-wrapper {
+  border: 1px solid var(--color-light);
+  min-height: 100px;
+  border-radius: 15px;
 }
