@@ -18,8 +18,8 @@
       <div class="navbar">
         <a href="../index.php"><img src="../assets/images/home.png" alt="" width="25px"></a>
         <div class="d-flex gap-5">
-          <a href=""><p>Watchlist</p></a>
-          <a href=""><p>Sign Out</p></a>
+          <a href="watchlist-page.php"><p>Watchlist</p></a>
+          <a href="../assets/php/logout.php"><p>Sign Out</p></a>
         </div>
       </div>
     </div>

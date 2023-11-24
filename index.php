@@ -35,7 +35,7 @@ $id_user = $_SESSION['id_user'];
         <div></div>
         <div class="d-flex gap-5">
           <a href="pages/watchlist-page.php"><p>Watchlist</p></a>
-          <p>Sign Out</p>
+          <a href="assets/php/logout.php"><p>Sign Out</p></a>
         </div>
       </div>
     </div>
