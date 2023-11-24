@@ -20,7 +20,8 @@ if (isset($_POST['Sign-In'])){
     } else {
         if ($check['email'] === $email && $check['password'] === $hash){
             $_SESSION['id_user'] = $check['id'];
-            $modalSuccess = "show";
+            //$modalSuccess = "show";
+            header('Location: ../index.php');
         } else { 
           $modalInvalid = "show";
         }
@@ -28,9 +29,15 @@ if (isset($_POST['Sign-In'])){
 }
 
 if (isset($_POST['close'])) {
-  $modalSuccess = "";
   $modalInvalid = "";
   $modalUnregistered = "";
+  
+}
+
+if (isset($_POST['closeSuccess'])) {
+  $modalSuccess = "";
+  header('location: ../index.php');
+  
 }
 ?>
 
@@ -81,7 +88,7 @@ if (isset($_POST['close'])) {
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Berhasil masuk ke akun!</p>
       <form action="login-page.php" method="POST">
-       <input type="submit" name="close" value="OK" class="btn btn-primary px-6 py-2">
+       <input type="submit" name="closeSuccess" value="OK" class="btn btn-primary px-6 py-2">
       </form>
     </div>
   </div>
@@ -91,7 +98,7 @@ if (isset($_POST['close'])) {
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <img src="../assets/images/warning.png" alt="" width="70px">
       <h2 class="color-primary mb-2">Sign In Gagal</h2>
-      <p class="mb-3">Periksa Kembali Password anda!</p>
+      <p class="mb-3">Periksa kembali Password Anda!</p>
       <form action="login-page.php" method="POST">
        <input type="submit" name="close" value="OK" class="btn btn-primary px-6 py-2">
       </form>

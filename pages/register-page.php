@@ -24,8 +24,13 @@ if (isset($_POST['Sign-Up'])){
 
 if (isset($_POST['close'])) {
     $modalRegistered = "";
-    $modalSuccess = "";
 }
+
+if (isset($_POST['closeSuccess'])) {
+  $modalSuccess = "";
+  header('location: login-page.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +85,7 @@ if (isset($_POST['close'])) {
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Berhasil membuat akun!</p>
       <form action="register-page.php" method="POST">
-       <input type="submit" name="close" value="OK" class="btn btn-primary px-6 py-2">
+       <input type="submit" name="closeSuccess" value="OK" class="btn btn-primary px-6 py-2">
       </form>
     </div>
   </div>
