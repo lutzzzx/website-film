@@ -34,7 +34,7 @@ $id_user = $_SESSION['id_user'];
       <div class="navbar">
         <div></div>
         <div class="d-flex gap-5">
-          <p>Watchlist</p>
+          <a href="pages/watchlist-page.php"><p>Watchlist</p></a>
           <p>Sign Out</p>
         </div>
       </div>
