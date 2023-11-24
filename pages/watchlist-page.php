@@ -3,7 +3,7 @@ include('../assets/php/database.php');
 session_start();
 $id_user = $_SESSION['id_user'];
 
-$sql = "SELECT film.judul, film.foto FROM watchlist JOIN film ON watchlist.id_film = film.id WHERE watchlist.id_user = '$id_user'";
+$sql = "SELECT film.id, film.judul, film.foto, watchlist.id_film FROM watchlist JOIN film ON watchlist.id_film = film.id WHERE watchlist.id_user = '$id_user'";
 $query = mysqli_query($connect, $sql);
 ?>
 
@@ -39,23 +39,12 @@ $query = mysqli_query($connect, $sql);
         <a href=""><img src="../<?= $row['foto']; ?>" alt="" class="img-wrapper mb-3"></a> <!-- Link menuju film -->
         <div class="d-flex w-100 gap-2 justify-content-between">
           <p class="mb-2 w-75"><?= $row['judul']; ?></p>
-          <a href="" class="w-25">  <!-- Link agar menghapus film dari daftar -->
+          <a href="../assets/php/hapus-watchlist.php?id=<?= $row['id_film']; ?>" class="w-25">  <!-- Link agar menghapus film dari daftar -->
             <img src="../assets/images/trash-bin.png" alt="hapus" width="40px">
           </a>
         </div>
       </div>
 <?php } ?>
-      <!--
-      <div class="card-movie">
-        <a href=""><img src="../assets/images/background.jpg" alt="" class="img-wrapper mb-3"></a> <!-- Link menuju film
-        <div class="d-flex w-100 gap-2 justify-content-between">
-          <p class="mb-2 w-75">Judul Film sdfsdf sdf saf sdfsdf</p>
-          <a href="" class="w-25">  <!-- Link agar menghapus film dari daftar 
-            <img src="../assets/images/trash-bin.png" alt="hapus" width="40px">
-          </a>
-        </div>
-      </div> -->
-
     </div>
   </main>
 
