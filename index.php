@@ -65,6 +65,43 @@
     <img src="assets/images/next.png" id="next-button" onclick="nextSlide()"/>
   </div>
 
+  <main class="container mt-5 mb-5">
+    <h1 class="mb-4">ALL MOVIES</h1>
+    <div class="d-flex flex-wrap gap-4">
+      <div class="card-movie">
+        <a href="" class="link-movie"> <!--Tambahkan link ke detail film-->
+          <img src="assets/images/background.jpg" alt="" class="img-wrapper mb-2">
+          <p class="text-center mb-2">Judul Film sdfsdf sdf saf sdfsdf s</p>
+        </a>
+        <div class="d-flex gap-3 justify-content-center">
+          <div class="bg-primary btn px-3 py-2 d-flex gap-2">
+            <img src="assets/images/like.png" alt="" width="16px">
+            <p style="font-size: 12px">123</p>
+          </div>
+          <div class="bg-primary btn px-3 py-2 d-flex gap-2">
+            <img src="assets/images/dislike.png" alt="" width="16px">
+            <p style="font-size: 12px">123</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-movie">
+        <a href="" class="link-movie"> <!--Tambahkan link ke detail film-->
+          <img src="assets/images/background.jpg" alt="" class="img-wrapper mb-2">
+          <p class="text-center mb-2">Judul Film sdfsdf sdf saf sdfsdf s</p>
+        </a>
+        <div class="d-flex gap-3 justify-content-center">
+          <div class="bg-primary btn px-3 py-2 d-flex gap-2">
+            <img src="assets/images/like.png" alt="" width="16px">
+            <p style="font-size: 12px">123</p>
+          </div>
+          <div class="bg-primary btn px-3 py-2 d-flex gap-2">
+            <img src="assets/images/dislike.png" alt="" width="16px">
+            <p style="font-size: 12px">123</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
   
 
