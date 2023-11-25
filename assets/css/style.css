@@ -9,6 +9,7 @@
   --color-light: #dedede;
   --color-primary: #d72626;
   --color-primary-2: #af1f1f;
+  --color-gray: #808080;
 }
 body {
   font-size: 16px;
@@ -38,6 +39,9 @@ a {
 .text-justify {
   text-align: justify;
 }
+.text-end {
+  text-align: end;
+}
 .decoration-none {
   text-decoration: none;
 }
@@ -55,13 +59,13 @@ a {
   height: 100%;
 }
 .w-100 {
-  width: 100%;
+  width: 100% !important;
 }
 .w-75 {
   width: 75%;
 }
 .w-70 {
-  width: 70%;
+  width: 70% !important;
 }
 .w-50 {
   width: 50%;
@@ -71,6 +75,9 @@ a {
 }
 .w-25 {
   width: 25%;
+}
+.w-15 {
+  width: 15%;
 }
 .mt-0 {
   margin-top: 0 !important;
@@ -166,6 +173,10 @@ a {
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
 }
+.py-4 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
 .mt-auto {
   margin-top: auto !important;
 }
@@ -228,6 +239,10 @@ a {
 }
 .bg-primary {
   background-color: var(--color-primary);
+  color: var(--color-light);
+}
+.bg-gray {
+  background-color: var(--color-gray);
   color: var(--color-light);
 }
 
@@ -420,4 +435,27 @@ a {
   border: 1px solid var(--color-light);
   min-height: 100px;
   border-radius: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+  border: 1px solid var(--color-gray);
+}
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-gray);
+}
+tr:nth-child(odd) {
+  background-color: #5b5b5b;
+}
+tr:nth-child(even) {
+  background-color: var(--color-dark);
+}
+.sinopsis {
+  max-height: 190px;
+  overflow-y: auto;
 }
