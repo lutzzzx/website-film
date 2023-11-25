@@ -2,9 +2,42 @@
 include('../assets/php/database.php');
 session_start();
 $id_user = $_SESSION['id_user'];
+$modalConfir = "";
+$modalLogout = "";
 
 $sql = "SELECT film.id, film.judul, film.foto, watchlist.id_film FROM watchlist JOIN film ON watchlist.id_film = film.id WHERE watchlist.id_user = '$id_user'";
 $query = mysqli_query($connect, $sql);
+
+if (isset($_GET['delConfir'])){
+  $modalConfir = "show";
+}
+
+if (isset($_SESSION['id_film'])){
+  if (isset($_POST['yes'])){
+    $id_user = $_SESSION['id_user'];
+    $id_film = $_SESSION['id_film'];
+  
+    $sqlDel = "DELETE FROM watchlist WHERE id_user = '$id_user' AND id_film = '$id_film'";
+    $queryDel = mysqli_query($connect, $sqlDel);
+    if ($queryDel) {
+      unset($_SESSION['id_film']);
+      $modalConfir = "";
+      header('location: watchlist-page.php'); 
+    }
+  }
+}
+
+if (isset($_GET['logConfir'])){
+  $modalLogout = "show";
+}
+
+if (isset($_POST['yesLogout'])){
+  session_unset();
+  session_destroy();
+  $modalLogout = "";
+  header('location: login-page.php'); 
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +59,7 @@ $query = mysqli_query($connect, $sql);
     <div class="container">
       <div class="navbar">
         <a href="../index.php"><img src="../assets/images/home.png" alt="" width="25px"></a>
-        <p >Sign Out</p>
+        <a href="../assets/php/logout.php?watchlist=1"><p>Sign Out</p></a>
       </div>
     </div>
   </nav>
@@ -50,24 +83,28 @@ $query = mysqli_query($connect, $sql);
 
 
     <!--MODAL KONFIRMASI Hapus film dari watchlist-->
-    <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+    <div class="modal <?= $modalConfir ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Hapus film dari watchlist?</p>
       <div class="d-flex gap-5">
-        <input type="submit" value="Ya" class="btn btn-primary px-5 py-2">
-        <input type="submit" name="close" value="Tidak" class="btn btn-light px-5 py-2">
+        <form action="watchlist-page.php" method="POST">
+          <input type="submit" name="yes" value="Ya" class="btn btn-primary px-5 py-2">
+          <input type="submit" name="close" value="Tidak" class="btn btn-light px-5 py-2">
+        </form>
       </div>
     </div>
   </div> 
 
 
   <!--MODAL KONFIRMASI LOGOUT-->
-  <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+  <div class="modal <?= $modalLogout ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Ingin keluar sekarang?</p>
       <div class="d-flex gap-5">
-        <input type="submit" value="Ya" class="btn btn-primary px-5 py-2">
-        <input type="submit" name="close" value="Tidak" class="btn btn-light px-5 py-2">
+      <form action="watchlist-page.php" method="POST">
+          <input type="submit" name="yesLogout" value="Ya" class="btn btn-primary px-5 py-2">
+          <input type="submit" name="close" value="Tidak" class="btn btn-light px-5 py-2">
+        </form>
       </div>
     </div>
   </div> 
