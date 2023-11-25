@@ -1,10 +1,11 @@
 <?php
 include('assets/php/database.php');
+session_start();
 
 $sql = "SELECT * FROM film";
 $query = mysqli_query($connect, $sql);
 
-$sqltop = "SELECT * FROM film ORDER BY jml_like DESC";
+$sqltop = "SELECT * FROM film ORDER BY jml_like DESC LIMIT 5";
 $querytop = mysqli_query($connect, $sqltop);
 
 $id_user = $_SESSION['id_user'];
@@ -67,7 +68,7 @@ $id_user = $_SESSION['id_user'];
 
         <?php while($row = mysqli_fetch_assoc($query)){ ?>
             <div class="card-movie">
-                <a href="" class="link-movie"> <!--Tambahkan link ke detail film-->
+                <a href="pages/detail-film.php?id=<?= $row['id']; ?>" class="link-movie"> <!--Tambahkan link ke detail film-->
                   <img src="<?= $row['foto'] ?>" alt="" class="img-wrapper mb-2">
                   <p class="text-center mb-2"><?= $row['judul'] ?></p>
                 </a>
