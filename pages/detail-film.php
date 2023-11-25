@@ -12,6 +12,28 @@ $sql = "SELECT * FROM film WHERE id = '$id_film'";
 $query = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($query);
 
+// SELECT LIKE
+$sqllike = "SELECT COUNT(*) AS jumlah_like FROM suka WHERE id_film = '$id_film'";
+$querylike = mysqli_query($connect, $sqllike);
+$result = mysqli_fetch_assoc($querylike);
+
+if($result){
+  $jumlahLike = $result['jumlah_like'];
+} else {
+  $jumlahLike = 0;
+}
+
+// SELECT DISLIKE
+$sqldislike = "SELECT COUNT(*) AS jumlah_dislike FROM unsuka WHERE id_film = '$id_film'";
+$querydislike = mysqli_query($connect, $sqldislike);
+$resultdislike = mysqli_fetch_assoc($querydislike);
+
+if($resultdislike){
+  $jumlahDislike = $resultdislike['jumlah_dislike'];
+} else {
+  $jumlahDislike = 0;
+}
+
 //SELECT KOMENTAR
 $sqlcom = "SELECT user.nama, komentar.komentar FROM komentar JOIN user ON komentar.id_user = user.id WHERE komentar.id_film = '$id_film'";
 $querycom = mysqli_query($connect, $sqlcom);
@@ -87,13 +109,13 @@ if (isset($_POST['close'])){
           <?= $row['deskripsi']; ?>
         </div>
         <div class="d-flex gap-5 justify-content-center mb-5">
-          <a href="" class="bg-primary btn px-5 py-2 d-flex gap-3"> <!-- Tombol Like -->
+          <a href="../assets/php/like.php?id=<?= $row['id']; ?>" class="bg-primary btn px-5 py-2 d-flex gap-3"> <!-- Tombol Like -->
             <img src="../assets/images/like.png" alt="" width="16px">
-            <p><?= $row['jml_like']; ?></p>
+            <p><?php echo $jumlahLike ?></p>
           </a>
-          <a href="" class="bg-primary btn px-5 py-2 d-flex gap-3"> <!-- Tombol Like -->
+          <a href="../assets/php/dislike.php?id=<?= $row['id']; ?>" class="bg-primary btn px-5 py-2 d-flex gap-3"> <!-- Tombol Like -->
             <img src="../assets/images/dislike.png" alt="" width="16px">
-            <p><?= $row['jml_dislike']; ?></p>
+            <p><?php echo $jumlahDislike ?></p>
           </a>
         </div>
         <p>Tambahkan Review</p>

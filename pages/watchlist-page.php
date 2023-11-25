@@ -69,7 +69,7 @@ if (isset($_POST['yesLogout'])){
     <div class="d-flex flex-wrap gap-4">
 <?php while($row = mysqli_fetch_assoc($query)) { ?>
       <div class="card-movie">
-        <a href=""><img src="../<?= $row['foto']; ?>" alt="" class="img-wrapper mb-3"></a> <!-- Link menuju film -->
+        <a href="detail-film.php?id=<?= $row['id']; ?>"><img src="../<?= $row['foto']; ?>" alt="" class="img-wrapper mb-3"></a> <!-- Link menuju film -->
         <div class="d-flex w-100 gap-2 justify-content-between">
           <p class="mb-2 w-75"><?= $row['judul']; ?></p>
           <a href="../assets/php/hapus-watchlist.php?id=<?= $row['id_film']; ?>" class="w-25">  <!-- Link agar menghapus film dari daftar -->

@@ -2,14 +2,32 @@
 include('assets/php/database.php');
 session_start();
 
-$sql = "SELECT * FROM film";
+// SELECT CARD FILM
+//$sql = "SELECT * FROM film";
+//$query = mysqli_query($connect, $sql);
+
+$sql = "SELECT film.id, film.judul, film.foto,
+                COALESCE(like_count, 0) AS jml_like,
+                COALESCE(dislike_count, 0) AS jml_dislike
+        FROM film
+        LEFT JOIN (
+        SELECT id_film, COUNT(*) AS like_count
+        FROM suka
+        GROUP BY id_film
+        ) AS likes ON film.id = likes.id_film
+        LEFT JOIN (
+        SELECT id_film, COUNT(*) AS dislike_count
+        FROM unsuka
+        GROUP BY id_film
+        ) AS dislikes ON film.id = dislikes.id_film;";
 $query = mysqli_query($connect, $sql);
 
+
+// SELECT 5 MOST LIKED FILM 
 $sqltop = "SELECT * FROM film ORDER BY jml_like DESC LIMIT 5";
 $querytop = mysqli_query($connect, $sqltop);
 
 $id_user = $_SESSION['id_user'];
-
 ?>
 
 <!DOCTYPE html>
