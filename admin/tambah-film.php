@@ -6,7 +6,7 @@ $role = "admin";
 $id_user = $_SESSION['id_user'];
 $sqladmin = "SELECT * FROM user WHERE id = '$id_user'";
 $queryadmin = mysqli_query($connect, $sqladmin);
-$row = mysqli_fetch_assoc($admin);
+$row = mysqli_fetch_assoc($queryadmin);
 
 if ($row['role'] === $role){
   header("location: access-denied.php");
