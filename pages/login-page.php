@@ -4,6 +4,7 @@ session_start();
 $modalSuccess = "";
 $modalInvalid = "";
 $modalUnregistered = "";
+$role = "admin";
 
 if (isset($_POST['Sign-In'])){
 
@@ -19,9 +20,12 @@ if (isset($_POST['Sign-In'])){
         $modalUnregistered = "show";
     } else {
         if ($check['email'] === $email && $check['password'] === $hash){
+          if ($check['role'] === $role) {
+            header("location: ../admin/index.php");
+          } else {
             $_SESSION['id_user'] = $check['id'];
-            //$modalSuccess = "show";
             header('Location: ../index.php');
+          }
         } else { 
           $modalInvalid = "show";
         }

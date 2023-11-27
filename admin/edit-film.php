@@ -1,3 +1,43 @@
+<?php
+include('../assets/php/database.php');
+$id_film = $_GET['id'];
+$sql = "SELECT * FROM film WHERE id = '$id_film'";
+$query = mysqli_query($connect, $sql);
+$row = mysqli_fetch_assoc($query);
+
+if (isset($_POST['submEdit'])){ 
+  $id_film = $_POST['id_film'];
+  $judul = $_POST['editJudul'];
+  $sinopsis = $_POST['editSinopsis'];
+
+  $sqlfoto = "SELECT * FROM film WHERE id = '$id_film'";
+  $queryfoto = mysqli_query($connect, $sqlfoto);
+  $res = mysqli_fetch_assoc($queryfoto);
+
+  $foto = $res['foto'];
+  if (!empty($_FILES['editFoto']['name'])){
+    $updatePhoto    = $_FILES['editFoto']['name'];
+    $foto   = 'assets/images/'.$updatePhoto;
+    $folder = '../assets/images/'.$updatePhoto;
+    move_uploaded_file($_FILES['editFoto']['tmp_name'], $folder);
+  }
+
+  $sqlupd = "UPDATE film SET foto='$foto', judul='$judul', deskripsi='$sinopsis' WHERE id = '$id_film'";
+  $queryupd = mysqli_query($connect, $sqlupd);
+  header("location: edit-film.php?id=$id_film&editSucc=1");
+}
+
+$modalEsucc = "";
+if (isset($_GET['editSucc'])){
+  $modalEsucc = "show";
+}
+if (isset($_POST['closeSuccess'])){
+  $modalEsucc = "";
+  header("location: daftar-film.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +78,7 @@
           <img src="../assets/images/right-arrow.png" alt="" width="18px">
         </a>
       </div>
-      <a href="" class="d-flex gap-2 decoration-none">
+      <a href="../assets/php/logout.php" class="d-flex gap-2 decoration-none">
         <img src="../assets/images/leave.png" alt="" class="w-25">
         <div  class="bg-gray p-3 w-75 d-flex justify-content-between">
           <p>Logout</p>
@@ -50,22 +90,23 @@
         
     <!-- Bagian Utama -->
     <main class="w-100 mb-5 bg-dark" style="margin-left: 280px">
-      <form action="" method="">
+      <form action="edit-film.php" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="id_film" value="<?php echo $row['id']; ?>">
         <h1 class="mb-4">Edit Film</h1>
         <div class="d-flex gap-5 w-100">
           <div class="w-25">
             <p class="mb-2">Poster</p> <br>
             <label for="photo-upload" class="btn btn-primary px-5">Pilih file</label> <br><br><br>
-            <input type="file" id="photo-upload" accept="image/*" onchange="previewImage()" style="display:none;" required/>
-            <img id="image-preview" src="#" alt="Preview" width="93%" style="display:none;">
+            <input type="file" name="editFoto" id="photo-upload" accept="image/*" onchange="previewImage()" style="display:none;"/>
+            <img id="image-preview" src="../<?= $row['foto'] ?>" alt="Preview" width="93%">
           </div>
           <div class="w-75">
             <label for="judul">Judul</label><br><br>
-            <input type="text" id="judul" class="input-form bg-dark w-100 mb-3" required><br><br>
+            <input type="text" name="editJudul" value="<?php echo $row['judul']; ?>" id="judul" class="input-form bg-dark w-100 mb-3" required><br><br>
             <label for="sinopsis">Sinopsis</label><br><br>
-            <textarea name="" id="sinopsis" class="input-form bg-dark w-100 mb-4" style="height: 40vh" required></textarea>
+            <textarea name="editSinopsis" id="sinopsis" class="input-form bg-dark w-100 mb-4" style="height: 40vh" required><?php echo $row['deskripsi']; ?></textarea>
             <div class="d-flex justify-content-end">
-              <input type="submit" value="Tambah" class="btn btn-primary px-5">
+              <input type="submit" name="submEdit" value="Simpan" class="btn btn-primary px-5">
             </div>
           </div>
         </div>
@@ -74,11 +115,13 @@
   </div>
 
   <!-- edit film Sukses -->
-  <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+  <div class="modal <?= $modalEsucc ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Film telah diedit!</p>
+      <form action="edit-film.php" method="POST">
       <input type="submit" name="closeSuccess" value="OK" class="btn btn-primary px-6 py-2">
-    </div>
+      </form>
+      </div>
   </div>
 
   <script src="../assets/js/preview-image.js"></script>

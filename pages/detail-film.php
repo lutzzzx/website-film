@@ -63,6 +63,28 @@ if (isset($_POST['close'])){
   header("location: detail-film.php?id=$id_film");
   session_unset($_SESSION['id_film']);
 }
+
+$modalLogout = "";
+if (isset($_GET['logConfir'])){
+  $modalLogout = "show";
+}
+
+if (isset($_POST['yesLogout'])){
+  session_unset();
+  session_destroy();
+  $modalLogout = "";
+  header("location: login-page.php");
+}
+
+if (isset($_POST['closeLog'])){
+  $id_film = $_SESSION['id_film'];
+  $modalLogout = "";
+  
+  if ($id_film){
+    header("location: detail-film.php?id=$id_film");
+    unset($_SESSION['id_film']);
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +92,7 @@ if (isset($_POST['close'])){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title><?= $row['judul']; ?></title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,7 +108,7 @@ if (isset($_POST['close'])){
         <a href="../index.php"><img src="../assets/images/home.png" alt="" width="25px"></a>
         <div class="d-flex gap-5">
           <a href="watchlist-page.php"><p>Watchlist</p></a>
-          <a href="../assets/php/logout.php"><p>Sign Out</p></a>
+          <a href="../assets/php/logout.php?id=<?= $row['id']; ?>&logDetail=1"><p>Sign Out</p></a>
         </div>
       </div>
     </div>
@@ -162,11 +184,15 @@ if (isset($_POST['close'])){
     </div>
   </div>
 
-    <!-- Berhasil Menambahkan review -->
-  <div class="modal"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
+  <div class="modal <?= $modalLogout ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
-      <p class="mb-5">Terima kasih sudah menambahkan review</p>
-      <input type="submit" name="close" value="OK" class="btn btn-primary px-6 py-2">
+      <p class="mb-5">Ingin keluar sekarang?</p>
+      <div class="d-flex gap-5">
+      <form action="detail-film.php" method="POST">
+          <input type="submit" name="yesLogout" value="Ya" class="btn btn-primary px-5 py-2">
+          <input type="submit" name="closeLog" value="Tidak" class="btn btn-light px-5 py-2">
+        </form>
+      </div>
     </div>
   </div>
 

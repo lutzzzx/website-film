@@ -1,3 +1,11 @@
+<?php 
+include('../assets/php/database.php');
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +45,7 @@
           <img src="../assets/images/right-arrow.png" alt="" width="18px">
         </a>
       </div>
-      <a href="" class="d-flex gap-2 decoration-none">
+      <a href="../assets/php/logout.php" class="d-flex gap-2 decoration-none">
         <img src="../assets/images/leave.png" alt="" class="w-25">
         <div  class="bg-gray p-3 w-75 d-flex justify-content-between">
           <p>Logout</p>

@@ -9,12 +9,12 @@ $sqlcek = "SELECT * FROM unsuka WHERE id_user = '$id_user' AND id_film = '$id_fi
 $querycek = mysqli_query($connect, $sqlcek);
 
 if (mysqli_num_rows($querycek) == 0){
-    $sqlsuka = "INSERT INTO unsuka (id_user, id_film) VALUES ('$id_user', '$id_film')";
-    $querysuka = mysqli_query($connect, $sqlsuka);
+    $sqlTidaksuka = "INSERT INTO unsuka (id_user, id_film) VALUES ('$id_user', '$id_film')";
+    $queryTidaksuka = mysqli_query($connect, $sqlTidaksuka);
     header("location: ../../pages/detail-film.php?id=$id_film");
 } else {
-    $sqlunsuka = "DELETE FROM unsuka WHERE id_user = '$id_user' AND id_film = '$id_film'";
-    $queryunsuka = mysqli_query($connect, $sqlunsuka);
+    $sqlTidaksuka = "DELETE FROM unsuka WHERE id_user = '$id_user' AND id_film = '$id_film'";
+    $queryTidaksuka = mysqli_query($connect, $sqlTidaksuka);
     header("location: ../../pages/detail-film.php?id=$id_film");
 }
 ?>
