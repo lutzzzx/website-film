@@ -91,12 +91,12 @@ if (isset($_POST['yesLogout'])){
     <div class="modal <?= $modalConfir ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Hapus film dari watchlist?</p>
-      <div class="d-flex gap-5">
-        <form action="watchlist-page.php" method="POST">
+      <form action="watchlist-page.php" method="POST">
+        <div class="d-flex gap-5">
           <input type="submit" name="yes" value="Ya" class="btn btn-primary px-5 py-2">
           <input type="submit" name="close" value="Tidak" class="btn btn-light px-5 py-2">
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </div> 
 
@@ -105,12 +105,12 @@ if (isset($_POST['yesLogout'])){
   <div class="modal <?= $modalLogout ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Ingin keluar sekarang?</p>
-      <div class="d-flex gap-5">
       <form action="watchlist-page.php" method="POST">
+        <div class="d-flex gap-5">
           <input type="submit" name="yesLogout" value="Ya" class="btn btn-primary px-5 py-2">
           <input type="submit" name="close" value="Tidak" class="btn btn-light px-5 py-2">
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </div> 
 

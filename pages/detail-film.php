@@ -157,7 +157,7 @@ if (isset($_POST['closeLog'])){
           </div>
         </form>
         <p>Review lainnya</p>
-        <div class="comment-wrapper p-4 d-flex flex-column gap-3">
+        <div class="comment-wrapper p-4 d-flex flex-column gap-3 mb-5">
           <?php while($com = mysqli_fetch_assoc($querycom)) { ?>
           <div class="comment">
             <p><b><?= $com['nama']; ?></b></p>
@@ -196,12 +196,12 @@ if (isset($_POST['closeLog'])){
   <div class="modal <?= $modalLogout ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Ingin keluar sekarang?</p>
-      <div class="d-flex gap-5">
       <form action="detail-film.php" method="POST">
+        <div class="d-flex gap-5">
           <input type="submit" name="yesLogout" value="Ya" class="btn btn-primary px-5 py-2">
           <input type="submit" name="closeLog" value="Tidak" class="btn btn-light px-5 py-2">
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </div>
 

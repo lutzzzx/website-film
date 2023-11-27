@@ -59,7 +59,7 @@ if (isset($_POST['yesLogout'])){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
+  <title>Action Review</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,12 +139,12 @@ if (isset($_POST['yesLogout'])){
   <div class="modal <?= $modalLogout ?>"> <!-- Tambahkan class "Show" untuk menampilkan modal -->
     <div class="modal-content card bg-dark text-center d-flex flex-column align-items-center justify-content-center">
       <p class="mb-5">Ingin keluar sekarang?</p>
-      <div class="d-flex gap-5">
       <form action="index.php" method="POST">
+        <div class="d-flex gap-5">
           <input type="submit" name="yesLogout" value="Ya" class="btn btn-primary px-5 py-2">
           <input type="submit" name="close" value="Tidak" class="btn btn-light px-5 py-2">
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </div> 
 
