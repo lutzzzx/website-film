@@ -2,8 +2,12 @@
 include('../assets/php/database.php');
 session_start();
 
-if(!isset($_SESSION['id_user'])){
+if (!isset($_SESSION['id_user'])){
   header("location: login-page.php");
+}
+
+if (!isset($_GET['id'])){
+  header("location: ../index.php");
 }
 
 $modalConfirw = "";
