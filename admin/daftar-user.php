@@ -1,5 +1,20 @@
 <?php
 include('../assets/php/database.php');
+session_start();
+
+$role = "admin";
+$id_user = $_SESSION['id_user'];
+$sqladmin = "SELECT * FROM user WHERE id = '$id_user'";
+$queryadmin = mysqli_query($connect, $sqladmin);
+$row = mysqli_fetch_assoc($admin);
+
+if ($row['role'] === $role){
+  header("location: access-denied.php");
+}
+
+if (!isset($_SESSION['id_user'])){
+  header("location: ../pages/login-page.php");
+}
 
 $sql = "SELECT * FROM user";
 $query = mysqli_query($connect, $sql);

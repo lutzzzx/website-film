@@ -21,6 +21,7 @@ if (isset($_POST['Sign-In'])){
     } else {
         if ($check['email'] === $email && $check['password'] === $hash){
           if ($check['role'] === $role) {
+            $_SESSION['id_user'] = $check['id'];
             header("location: ../admin/index.php");
           } else {
             $_SESSION['id_user'] = $check['id'];
