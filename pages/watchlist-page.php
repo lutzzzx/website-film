@@ -1,6 +1,11 @@
 <?php
 include('../assets/php/database.php');
 session_start();
+
+if(!isset($_SESSION['id_user'])){
+  header("location: login-page.php");
+}
+
 $id_user = $_SESSION['id_user'];
 $modalConfir = "";
 $modalLogout = "";

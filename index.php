@@ -2,6 +2,10 @@
 include('assets/php/database.php');
 session_start();
 
+if(!isset($_SESSION['id_user'])){
+  header("location: pages/login-page.php");
+}
+
 // SELECT CARD FILM
 $sql = "SELECT film.id, film.judul, film.foto,
                 COALESCE(like_count, 0) AS jml_like,
